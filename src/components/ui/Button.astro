@@ -1,0 +1,54 @@
+---
+interface Props {
+  className?: string;
+  id?: string;
+}
+const { id, className, ...props } = Astro.props;
+
+const circle = className?.includes("circle");
+---
+
+<button {...props} id={id} class={`${circle ? "circle" : ""} ${className}`}>
+  <slot />
+</button>
+
+<style>
+  button {
+    position: relative;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 40px;
+    min-width: 40px;
+    width: fit-content;
+    height: fit-content;
+    padding: var(--spacing-md) var(--spacing-lg);
+    gap: var(--spacing-md);
+
+    border-radius: var(--rounded-md);
+
+    background-color: var(--primary-color);
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  button:hover,
+  button:active {
+    background-color: var(--primary-hover-color);
+  }
+
+  .circle {
+    max-width: 40px;
+    max-height: 40px;
+    padding: var(--spacing-md);
+
+    border-radius: var(--rounded-full);
+  }
+</style>

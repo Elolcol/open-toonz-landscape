@@ -1,0 +1,113 @@
+---
+import MenuExpand from "../../assets/icons/MenuExpand.astro";
+import Logo from "../../assets/Logo.astro";
+import Link from "./Link.astro";
+import Heart from "../../assets/icons/Heart.astro";
+import Button from "./Button.astro";
+---
+
+<script>
+  const menu = document.getElementById("menu") as HTMLButtonElement;
+  const nav = document.getElementById("navbar") as HTMLDivElement;
+
+  menu.addEventListener("click", () => {
+    nav.classList.toggle("active");
+    menu.classList.toggle("active");
+  });
+</script>
+
+<header>
+  <a href="/">
+    <Logo />
+  </a>
+  <nav id="navbar">
+    <Link href="/">Features</Link>
+    <Link href="/">Download</Link>
+    <Link href="/">Support</Link>
+    <Link href="/">Get Involved</Link>
+    <Link href="/">About</Link>
+    <a href="/"><Button><Heart />Donate</Button></a>
+  </nav>
+  <button id="menu">
+    <MenuExpand />
+  </button>
+</header>
+
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 200px;
+    height: 60px;
+    width: 100%;
+    background-color: var(--white-color);
+    transition: top 0.3s ease-in-out;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+  }
+
+  nav.active {
+    opacity: 1;
+    scale: 1;
+    visibility: visible;
+  }
+
+  #menu {
+    display: none;
+    cursor: pointer;
+    visibility: hidden;
+    stroke: var(--lightdark-color);
+  }
+
+  a {
+    color: var(--lightdark-color);
+    text-decoration: none !important;
+  }
+
+  a:hover {
+    color: var(--primary-color);
+  }
+
+  @media screen and (max-width: 768px) {
+    header {
+      padding: 0 50px;
+    }
+
+    #menu {
+      display: block;
+      visibility: visible;
+    }
+
+    nav {
+      position: absolute;
+      top: -400px;
+      left: 0;
+      z-index: -100;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      overflow: auto;
+      max-height: 100vh;
+      width: 100%;
+      background-color: var(--white-color);
+      transform-origin: top;
+      transition: all 0.3s ease-in-out;
+    }
+
+    nav.active {
+      top: 60px;
+    }
+  }
+</style>

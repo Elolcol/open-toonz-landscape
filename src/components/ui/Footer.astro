@@ -1,0 +1,123 @@
+---
+import X from "../../assets/icons/X.astro";
+import Button from "./Button.astro";
+import Link from "./Link.astro";
+import ArrowUp from "../../assets/icons/ArrowUp.astro";
+import Facebook from "../../assets/icons/Facebook.astro";
+---
+
+<script>
+  const button = document.getElementById("page-top");
+
+  button?.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+    });
+  });
+</script>
+
+<footer>
+  <article>
+    <div></div>
+    <hr />
+    <div class="social">
+      <p class="title">Follow OpenToonz</p>
+      <Link href="https://x.com/OpenToonz" target="_blank" className="X"
+        ><X />X</Link
+      >
+      <Link
+        href="https://facebook.com/OpenToonz"
+        target="_blank"
+        className="facebook"><Facebook />Facebook</Link
+      >
+    </div>
+  </article>
+  <Link href="https://dwango.co.jp/" target="_blank" className="dwango"
+    >© DWANGO Co., Ltd.</Link
+  >
+  <p class="title">
+    This open source program has been developed from Toonz, a program originally
+    created by Digital Video, S.p.A., Rome - Italy.
+  </p>
+  <Button id="page-top" className="circle"><ArrowUp /></Button>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--spacing-xl);
+    height: fit-content;
+    width: 100%;
+    padding: var(--spacing-xl) 250px;
+    background-color: var(--foreground-color);
+    text-align: center;
+
+    article {
+      flex-flow: row wrap;
+      display: flex;
+      gap: var(--spacing-md);
+    }
+  }
+
+  .title {
+    font-weight: bold;
+    color: var(--gray-color);
+  }
+
+  .social {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  a {
+    color: var(--darkgray-color) !important;
+
+    svg {
+      stroke: var(--darkgray-color) !important;
+    }
+  }
+
+  .X:hover {
+    text-decoration: none;
+    color: #1dcaff !important;
+
+    svg {
+      stroke: #1dcaff !important;
+    }
+  }
+
+  .facebook:hover {
+    text-decoration: none;
+    color: #3b5998 !important;
+
+    svg {
+      stroke: #3b5998 !important;
+    }
+  }
+
+  .dwango:hover {
+    text-decoration: none;
+    color: #0075c2 !important;
+  }
+
+  hr {
+    width: 2px;
+    height: 100px;
+  }
+
+  @media screen and (max-width: 768px) {
+    footer {
+      padding: var(--spacing-xl) var(--spacing-lg);
+    }
+
+    hr {
+      display: none;
+    }
+  }
+</style>

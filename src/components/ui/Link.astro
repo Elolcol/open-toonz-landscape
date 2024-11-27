@@ -1,0 +1,48 @@
+---
+interface Props {
+  href?: string;
+  target?: string;
+  className?: string;
+}
+
+const { href, target, className, ...props } = Astro.props;
+---
+
+<a
+  {...props}
+  target={target}
+  href={href}
+  class={className}
+  rel="noopener noreferrer nofollow"
+>
+  <slot />
+</a>
+
+<style>
+  a {
+    position: relative;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    min-height: fit-content;
+    min-width: fit-content;
+    gap: var(--spacing-md);
+
+    color: var(--white-color);
+
+    cursor: pointer;
+  }
+
+  a:hover,
+  a:active {
+    text-decoration: underline;
+    color: var(--gray-color);
+
+    svg {
+      stroke: var(--gray-color);
+    }
+  }
+</style>

@@ -1,50 +1,172 @@
 ---
+import Footer from "../components/ui/Footer.astro";
+import Navbar from "../components/ui/Navbar.astro";
+
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <section class="navbar">
+      <Navbar />
+    </section>
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+    --transparent: transparent;
+    --current-color: currentColor;
+
+    --white-color: #ffffff;
+    --gray-color: #abb2ba;
+    --darkgray-color: #737e8c;
+    --lightdark-color: #4c4d52;
+    --dark-color: #1c1c1c;
+
+    --background-color: #f2f2f3;
+    --foreground-color: #292d32;
+
+    --primary-color: #54963b;
+    --primary-hover-color: #7caa6a;
+    --secondary-color: #bf4bbd;
+    --secondary-hover-color: #d94bbd;
+
+    --spacing-sm: 0.313rem;
+    --spacing-md: 0.625rem;
+    --spacing-lg: 1.25rem;
+    --spacing-xl: 2.5rem;
+    --spacing-xxl: 3.75rem;
+
+    --rounded-sm: 0.313rem;
+    --rounded-md: 0.625rem;
+    --rounded-lg: 1.25rem;
+    --rounded-xl: 2.5rem;
+    --rounded-xxl: 3.75rem;
+    --rounded-full: 9999999px;
+  }
+
+  *,
+  *::before,
+  *::after {
+    appearance: none;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    min-width: 0;
+    min-height: 0;
+
+    border: none var(--current-color) solid 0;
+    outline: none;
+
+    box-shadow: none;
+    text-decoration: none;
+    list-style: none;
+
+    background-color: var(--transparent);
+    color: var(--white-color);
+
+    transition: all 0.1s ease-in-out;
+  }
+
+  *:disabled {
+    opacity: 0.5;
+  }
+
+  html {
+    font-family: "Rubik Variable", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color);
+  }
+
+  .navbar {
+    width: 100%;
+    height: 60px;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    gap: var(--spacing-lg);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  p {
+    overflow: hidden;
+    text-wrap: pretty;
+    text-overflow: ellipsis;
+  }
+
+  a:hover,
+  a:active {
+    color: var(--gray-color);
+  }
+
+  hr {
+    width: 80%;
+    height: 2px;
+    border: none;
+    border-radius: 9999px;
+    background-color: var(--lightdark-color);
+  }
+
+  /* 2xlarge */
+  @media (max-width: 1536px) {
+  }
+
+  /* xlarge */
+  @media (max-width: 1280px) {
+  }
+
+  /* large */
+  @media (max-width: 1024px) {
+  }
+
+  /* medium */
+  @media (max-width: 768px) {
+  }
+
+  /* small */
+  @media (max-width: 640px) {
+  }
 </style>
