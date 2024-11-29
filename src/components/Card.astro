@@ -1,23 +1,113 @@
 ---
 interface Props {
   title: string;
-  body: string;
-  href: string;
+  subtitle?: string;
+  image?: string;
+  video?: string;
 }
 
-const { href, title, body } = Astro.props;
+const { title, subtitle, image, video } = Astro.props;
 ---
 
-<li class="link-card">
-  <a href={href}>
+<script>
+  const img = document.querySelector("img");
+  const h3 = document.querySelector("h3");
+  const video = document.querySelector("video");
+
+  if (img && (!img.src || img.src.trim() === "")) {
+    img.style.display = "none";
+  }
+
+  if (video && (!video.src || video.src.trim() === "")) {
+    video.style.display = "none";
+  }
+
+  if (h3 && (!h3.textContent || h3.textContent.trim() === "")) {
+    h3.style.display = "none";
+  }
+</script>
+
+<article class="card">
+  <header>
     <h2>
       {title}
-      <span>&rarr;</span>
     </h2>
-    <p>
-      {body}
-    </p>
-  </a>
-</li>
+    <h3>{subtitle}</h3>
+  </header>
+  <div>
+    <img src={image} alt={title} />
+    <video src={video} autoplay loop></video>
+    <slot name="body" />
+  </div>
+  <slot name="footer" />
+</article>
 
-<style></style>
+<style>
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    border-radius: var(--rounded-md);
+    background-color: var(--white-color);
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+    color: var(--dark-color);
+    max-width: 1000px;
+
+    header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+
+    div {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+      width: 100%;
+    }
+
+    img,
+    video {
+      min-width: 50%;
+      height: auto;
+      object-fit: cover;
+      border-radius: var(--rounded-md);
+    }
+
+    img:not([src]) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .card {
+      div {
+        flex-direction: column;
+      }
+    }
+
+    img,
+    video {
+      width: 100%;
+    }
+  }
+</style>

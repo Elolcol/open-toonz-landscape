@@ -15,7 +15,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
     <title>{title}</title>
   </head>
   <body>
@@ -81,7 +81,6 @@ const { title } = Astro.props;
     list-style: none;
 
     background-color: var(--transparent);
-    color: var(--white-color);
 
     transition: all 0.1s ease-in-out;
   }
@@ -93,6 +92,7 @@ const { title } = Astro.props;
   html {
     font-family: "Rubik Variable", sans-serif;
     scroll-behavior: smooth;
+    color: var(--white-color);
   }
 
   body {

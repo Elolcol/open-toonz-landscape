@@ -1,0 +1,320 @@
+---
+import Checkbox from "../../assets/icons/Checkbox.astro";
+import Download from "../../assets/icons/Download.astro";
+import MacOS from "../../assets/icons/MacOS.astro";
+import Windows from "../../assets/icons/Windows.astro";
+import Card from "../../components/Card.astro";
+import Button from "../../components/ui/Button.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Download - OpenToonz">
+  <section class="hero">
+    <img src="/public/point_bg.jpg" alt="" class="cover" />
+    <article class="content">
+      <h1>Thanks for Using OpenToonz</h1>
+      <div class="buttons">
+        <a
+          href="https://github.com/opentoonz/opentoonz/releases/tag/v1.7.1"
+          rel="noopener noreferrer"
+        >
+          <Button><Download />Download OpenToonz 1.7.1</Button>
+        </a>
+        <a
+          href="https://github.com/opentoonz/opentoonz/releases/tag/nightly"
+          rel="noopener noreferrer"
+        >
+          <Button className="white"><Download />Download Nightly Build</Button>
+        </a>
+      </div>
+      <p>
+        Looking for
+        <a
+          href="https://github.com/opentoonz/opentoonz/releases"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="link">older versions</a
+        >
+        or
+        <a
+          href="https://github.com/opentoonz"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="link">source code</a
+        >
+        ?
+      </p>
+    </article>
+  </section>
+  <section class="requirements">
+    <h2>System Requirements</h2>
+    <ul>
+      <li>
+        <strong>Operating System: </strong>Windows 7 or later / Mac OS X 10.9 or
+        later
+      </li>
+      <li>
+        <strong>Processor: </strong>Intel Core i series processor
+      </li>
+      <li>
+        <strong>Memory: </strong>4GB or more RAM
+      </li>
+      <li>
+        <strong>Storage: </strong>500 MB or more available storage space
+      </li>
+      <li>
+        <strong>Monitor: </strong>1280 x 1024 or higher monitor resolution
+      </li>
+    </ul>
+  </section>
+  <section class="programs">
+    <h2>Another Tools</h2>
+    <Card
+      title="GTS"
+      subtitle="a scanning tool developed by Studio Ghibli"
+      image="public/function_img01.png"
+    >
+      <ul slot="body" class="list">
+        <li>
+          <Checkbox /><strong
+            >Sequence number scanning can be conducted efficiently according to
+            in between animation numbers.
+          </strong>
+        </li>
+        <li>
+          <Checkbox /><strong>Compatible with 4 types of scanning. </strong><p>
+            (black & white, colored, with or without binarization)
+          </p>
+        </li>
+        <li>
+          <Checkbox /><strong
+            >The settings for scanning can be saved. Processes can be reproduced
+            when some cuts are rescanned.
+          </strong>
+        </li>
+        <li>
+          <Checkbox /><strong>Compatible with the TWAIN standards </strong>
+        </li>
+      </ul>
+      <a
+        href="https://github.com/opentoonz/GTS/releases/tag/v2.5.1"
+        rel="noopener noreferrer"
+        slot="footer"
+      >
+        <Button><Windows />Download V2.5.1</Button>
+      </a>
+      <a
+        href="https://github.com/opentoonz/GTS"
+        rel="noopener noreferrer"
+        target="_blank"
+        slot="footer"
+      >
+        Source code
+      </a>
+    </Card>
+    <Card
+      title="KumoWorks"
+      subtitle="a software for making cloud scenery"
+      video="public/kumoworks.webm"
+    >
+      <div slot="body" class="description">
+        <p>It generates cloud image according to a silhouette you draw.</p>
+        <p>
+          We aim to develop a useful tool for creating background art or color
+          script for animation production.
+        </p>
+        <ul>
+          <strong>A Very-basic Usage</strong>
+          <li>Launch KumoWorks.</li>
+          <li>Draw a silhouette of cloud on the viewer.</li>
+          <li>Hit Enter(Return) key.</li>
+        </ul>
+      </div>
+      <div slot="footer" class="buttons">
+        <a
+          href="https://github.com/opentoonz/kumoworks/releases/tag/v1.0.1"
+          rel="noopener noreferrer"
+          slot="footer"
+        >
+          <Button><Windows />Download V1.0.1</Button>
+        </a><a
+          href="https://github.com/opentoonz/kumoworks/releases/tag/v1.0.1"
+          rel="noopener noreferrer"
+          slot="footer"
+        >
+          <Button><MacOS />Download V1.0.1</Button>
+        </a>
+      </div>
+      <a
+        href="https://github.com/opentoonz/kumoworks"
+        rel="noopener noreferrer"
+        target="_blank"
+        slot="footer"
+      >
+        Source code
+      </a>
+    </Card>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+
+    .cover {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      filter: brightness(0.8);
+    }
+
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--spacing-md);
+      padding: var(--spacing-xl) 200px;
+
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .link {
+        text-decoration: underline;
+        color: var(--white-color);
+      }
+
+      p {
+        text-align: center;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+  }
+
+  .requirements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) 10px;
+    color: var(--dark-color);
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--primary-color);
+      text-align: center;
+    }
+
+    ul {
+      li {
+      }
+    }
+  }
+
+  .programs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    color: var(--dark-color);
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--primary-color);
+      text-align: center;
+    }
+
+    .buttons {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+
+      li {
+        svg {
+          translate: 0 5px;
+        }
+        strong {
+          font-size: 1.2rem;
+        }
+        p {
+          padding-left: 24px;
+        }
+      }
+    }
+  }
+  /* large */
+  @media (max-width: 768px) {
+    .hero {
+      .content {
+        padding: var(--spacing-md);
+
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .requirements {
+      h2 {
+        font-size: 2rem;
+      }
+    }
+
+    .programs {
+      margin: 0 10px;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  }
+</style>

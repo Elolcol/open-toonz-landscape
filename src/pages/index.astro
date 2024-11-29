@@ -1,4 +1,5 @@
 ---
+import Checkbox from "../assets/icons/Checkbox.astro";
 import Button from "../components/ui/Button.astro";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -7,11 +8,93 @@ import Layout from "../layouts/Layout.astro";
   <section class="hero">
     <img src="/public/cover_bg.webp" alt="" class="cover" />
     <img src="/public/hand.png" alt="" class="hand" />
-    <div>
+    <article class="content">
       <img src="/public/cover_logo.png" alt="" />
-      <h2>A free and open source tool for animators.</h2>
-      <Button>Download</Button>
-    </div>
+      <h1>A free and open source tool for animators.</h1>
+      <div class="buttons">
+        <a href="https://github.com/opentoonz/opentoonz/releases/tag/v1.7.1">
+          <Button className="white">What's New</Button>
+        </a>
+        <a href="/download">
+          <Button>Download</Button>
+        </a>
+      </div>
+    </article>
+  </section>
+
+  <section class="about">
+    <h2>About OpenToonz</h2>
+    <ul>
+      <li>
+        <Checkbox /><strong
+          >Software for the production of 2D animation.
+        </strong><p>
+          Based on the software "Toonz", developed by Digital Video S.p.A. in
+          Italy, OpenToonz has been customized by Studio Ghibli, and used for
+          the creation of its works for many years. Dwango has launched the
+          OpenToonz project in cooperation with Digital Video and Studio Ghibli.
+        </p>
+      </li>
+      <li>
+        <Checkbox /><strong
+          >OpenToonz can be used free of charge for both commercial and
+          non-commercial projects.
+        </strong>
+      </li>
+      <li>
+        <Checkbox /><strong
+          >Available as an open-source so that anyone can modify its source code
+          freely.
+        </strong>
+      </li>
+      <li>
+        <Checkbox /><strong
+          >We aim to develop a new platform for connecting the academic research
+          with cutting edge animation production.
+        </strong>
+      </li>
+    </ul>
+  </section>
+  <section class="foss">
+    <h2>Free and Open Source</h2>
+    <p>
+      OpenToonz is a public project licensed as BSD, owned by its contributors.
+    </p>
+    <p>
+      For that reason OpenToonz is Free and Open Source software, forever.
+      <a href="/">Learn more</a>
+    </p>
+  </section>
+  <section class="effects">
+    <h2>Effects</h2>
+    <p>
+      By using the plug-in effect SDK, the effects developed by Dwango's machine
+      learning research and development team are released. They include the
+      effect of automatically changing picture styles by applying the deep
+      learning technology and the effect of producing affected incident light
+      like those in classic works before the digitization of the production
+      environment.
+    </p>
+    <article>
+      <div>
+        <h3>Changing picture styles</h3><img
+          src="/public/effect_img01.png"
+          alt=""
+        />
+      </div>
+      <div>
+        <h3>Affected incident light</h3><img
+          src="/public/effect_img02.png"
+          alt=""
+        />
+      </div>
+      <div>
+        <h3>Wavy distortion</h3><img src="/public/effect_img03.png" alt="" />
+      </div>
+    </article>
+  </section>
+  <section class="features">
+    <h2>Features</h2>
   </section>
 </Layout>
 
@@ -37,7 +120,7 @@ import Layout from "../layouts/Layout.astro";
       object-fit: contain;
     }
 
-    div {
+    .content {
       position: absolute;
       top: 0;
       left: 0;
@@ -52,14 +135,143 @@ import Layout from "../layouts/Layout.astro";
       padding: var(--spacing-xl) 200px;
 
       h1 {
-        font-size: 3.5rem;
-        font-weight: 900;
-      }
-
-      h2 {
+        font-size: 1.5rem;
         font-weight: 400;
         text-align: center;
       }
+    }
+
+    .buttons {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+  }
+
+  .foss {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    margin: 0 10px;
+    background-color: var(--foreground-color);
+    border-radius: var(--rounded-md);
+
+    h2 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--primary-hover-color);
+    }
+
+    a {
+      text-decoration: underline;
+      color: var(--primary-hover-color);
+    }
+  }
+
+  .about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 900px;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    color: var(--dark-color);
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--dark-color);
+      text-align: center;
+      width: 100%;
+      color: var(--primary-color);
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+
+      li {
+        svg {
+          translate: 0 5px;
+        }
+        strong {
+          font-size: 1.2rem;
+        }
+        p {
+          padding-left: 24px;
+        }
+      }
+    }
+  }
+
+  .effects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    color: var(--dark-color);
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-align: center;
+      width: 100%;
+      color: var(--primary-color);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--primary-color);
+    }
+
+    article {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--spacing-lg);
+
+      div {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-lg);
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    p {
+      max-width: 700px;
+    }
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+
+    h2 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--dark-color);
     }
   }
 
@@ -68,7 +280,7 @@ import Layout from "../layouts/Layout.astro";
     .hero {
       height: 500px;
 
-      div {
+      .content {
         justify-content: center;
         align-items: center;
         padding: 0;
@@ -77,6 +289,13 @@ import Layout from "../layouts/Layout.astro";
 
     .hand {
       display: none;
+    }
+  }
+
+  /* medium */
+  @media (max-width: 768px) {
+    .features {
+      padding: 0 5px;
     }
   }
 </style>

@@ -6,9 +6,14 @@ interface Props {
 const { id, className, ...props } = Astro.props;
 
 const circle = className?.includes("circle");
+const white = className?.includes("white");
 ---
 
-<button {...props} id={id} class={`${circle ? "circle" : ""} ${className}`}>
+<button
+  {...props}
+  id={id}
+  class={`${circle ? "circle" : ""} ${white ? "white" : ""} ${className}`}
+>
   <slot />
 </button>
 
@@ -50,5 +55,18 @@ const circle = className?.includes("circle");
     padding: var(--spacing-md);
 
     border-radius: var(--rounded-full);
+  }
+
+  .white {
+    background-color: var(--background-color);
+    color: var(--dark-color);
+    svg {
+      stroke: var(--dark-color);
+    }
+  }
+
+  .white:hover,
+  .white:active {
+    background-color: var(--white-color);
   }
 </style>
