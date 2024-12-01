@@ -1,16 +1,42 @@
 ---
+import Link from "./Link.astro";
+
+/** Icons */
+import MenuCollapse from "../../assets/icons/MenuCollapse.astro";
 import MenuExpand from "../../assets/icons/MenuExpand.astro";
 import Logo from "../../assets/Logo.astro";
-import Link from "./Link.astro";
 ---
 
 <script>
-  const menu = document.getElementById("menu") as HTMLButtonElement;
   const nav = document.getElementById("navbar") as HTMLDivElement;
+  const menu = document.getElementById("menu") as HTMLButtonElement;
+
+  const close = document.getElementById("close") as HTMLButtonElement;
+  const open = document.getElementById("open") as HTMLButtonElement;
 
   menu.addEventListener("click", () => {
-    nav.classList.toggle("active");
+    // Toggle navbar
+    const isActive = nav.classList.toggle("active");
     menu.classList.toggle("active");
+
+    // Toggle icons
+    close.style.display = isActive ? "block" : "none";
+    open.style.display = isActive ? "none" : "block";
+  });
+
+  // Close navbar on click outside
+  document.addEventListener("mousedown", (e) => {
+    if (!nav.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+      if (nav.classList.contains("active")) {
+        // Toggle navbar
+        nav.classList.remove("active");
+        menu.classList.remove("active");
+
+        // Toggle icons
+        close.style.display = "none";
+        open.style.display = "block";
+      }
+    }
   });
 </script>
 
@@ -24,10 +50,10 @@ import Link from "./Link.astro";
     <Link href="/support">Support</Link>
     <Link href="/get-involved">Get Involved</Link>
     <Link href="/about">About</Link>
-    <!-- <a href="/"><Button><Heart />Donate</Button></a> -->
   </nav>
   <button id="menu">
-    <MenuExpand />
+    <MenuCollapse id="close" />
+    <MenuExpand id="open" />
   </button>
 </header>
 
@@ -58,7 +84,6 @@ import Link from "./Link.astro";
 
   nav.active {
     opacity: 1;
-    scale: 1;
     visibility: visible;
   }
 
@@ -67,6 +92,19 @@ import Link from "./Link.astro";
     cursor: pointer;
     visibility: hidden;
     stroke: var(--lightdark-color);
+  }
+
+  #close {
+    display: none;
+  }
+
+  #open {
+    display: block;
+  }
+
+  #close.active,
+  #open.active {
+    display: block;
   }
 
   a {

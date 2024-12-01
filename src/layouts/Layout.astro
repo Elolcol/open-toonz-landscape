@@ -10,13 +10,31 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+
     <title>{title}</title>
+    <meta
+      name="description"
+      content="OpenToonz - Open-source Animation Production Software"
+    />
+    <meta name="keywords" content="ドワンゴ,dwango,アニメーションツール" />
+
+    <meta property="og:title" content="OpenToonz" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="OpenToonz - Open-source Animation Production Software"
+    />
+    <meta property="og:url" content="https://opentoonz.github.io/" /><meta
+      property="og:image"
+      content="https://opentoonz.github.io/e/img/ogp_e.jpg"
+    />
+    <meta property="og:site_name" content="OpenToonz" />
+    <meta property="og:locale" content="en_US" />
   </head>
   <body>
     <section class="navbar">
@@ -44,8 +62,11 @@ const { title } = Astro.props;
 
     --primary-color: #54963b;
     --primary-hover-color: #7caa6a;
-    --secondary-color: #bf4bbd;
-    --secondary-hover-color: #d94bbd;
+
+    --windows-color: #0078d7;
+    --windows-hover-color: #2684ff;
+    --macos-color: #c0bfc0;
+    --macos-hover-color: #e1dfe1;
 
     --spacing-sm: 0.313rem;
     --spacing-md: 0.625rem;
@@ -92,7 +113,7 @@ const { title } = Astro.props;
   html {
     font-family: "Rubik Variable", sans-serif;
     scroll-behavior: smooth;
-    color: var(--white-color);
+    color: var(--dark-color);
   }
 
   body {
@@ -135,6 +156,12 @@ const { title } = Astro.props;
     overflow: hidden;
     text-wrap: pretty;
     text-overflow: ellipsis;
+  }
+
+  a {
+    width: fit-content;
+    height: fit-content;
+    color: var(--dark-color);
   }
 
   a:hover,

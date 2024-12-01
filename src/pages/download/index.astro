@@ -1,25 +1,44 @@
 ---
-import Checkbox from "../../assets/icons/Checkbox.astro";
-import Download from "../../assets/icons/Download.astro";
-import MacOS from "../../assets/icons/MacOS.astro";
-import Windows from "../../assets/icons/Windows.astro";
-import Card from "../../components/Card.astro";
-import Button from "../../components/ui/Button.astro";
+import { Image } from "astro:assets";
+
+/** Components */
 import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/ui/Button.astro";
+import Card from "../../components/Card.astro";
+
+/** Icons */
+import Windows from "../../assets/icons/Windows.astro";
+import MacOS from "../../assets/icons/MacOS.astro";
+import Download from "../../assets/icons/Download.astro";
+import Checkbox from "../../assets/icons/Checkbox.astro";
+
+/** Images */
+import PointBG from "../../assets/images/point_bg.jpg";
+import Function1 from "../../assets/images/function_img01.png";
+import KumoWorks from "../../assets/videos/KumoWorks.webm";
+import IwaWarper from "../../assets/videos/IwaWarper.mp4";
+import XDTS_Viewer from "../../assets/videos/XDTS-Viewer.mp4";
 ---
 
 <Layout title="Download - OpenToonz">
   <section class="hero">
-    <img src="/point_bg.jpg" alt="" class="cover" />
+    <Image src={PointBG} alt="" class="cover" />
     <article class="content">
       <h1>Thanks for Using OpenToonz</h1>
       <div class="buttons">
-        <a
-          href="https://github.com/opentoonz/opentoonz/releases/tag/v1.7.1"
-          rel="noopener noreferrer"
-        >
-          <Button><Download />Download OpenToonz 1.7.1</Button>
-        </a>
+        <div class="install">
+          <a
+            href="https://github.com/opentoonz/opentoonz/releases/download/v1.7.1/OpenToonzSetup.exe"
+            rel="noopener noreferrer"
+          >
+            <Button className="windows"><Windows />Download 1.7.1</Button>
+          </a><a
+            href="https://github.com/opentoonz/opentoonz/releases/download/v1.7.1/OpenToonz.pkg"
+            rel="noopener noreferrer"
+          >
+            <Button className="macos"><MacOS />Download 1.7.1</Button>
+          </a>
+        </div>
         <a
           href="https://github.com/opentoonz/opentoonz/releases/tag/nightly"
           rel="noopener noreferrer"
@@ -27,8 +46,9 @@ import Layout from "../../layouts/Layout.astro";
           <Button className="white"><Download />Download Nightly Build</Button>
         </a>
       </div>
+
       <p>
-        Looking for
+        Need
         <a
           href="https://github.com/opentoonz/opentoonz/releases"
           rel="noopener noreferrer"
@@ -41,8 +61,7 @@ import Layout from "../../layouts/Layout.astro";
           rel="noopener noreferrer"
           target="_blank"
           class="link">source code</a
-        >
-        ?
+        >?
       </p>
     </article>
   </section>
@@ -72,7 +91,7 @@ import Layout from "../../layouts/Layout.astro";
     <Card
       title="GTS"
       subtitle="a scanning tool developed by Studio Ghibli"
-      image="/function_img01.png"
+      image={Function1}
     >
       <ul slot="body" class="list">
         <li>
@@ -97,11 +116,11 @@ import Layout from "../../layouts/Layout.astro";
         </li>
       </ul>
       <a
-        href="https://github.com/opentoonz/GTS/releases/tag/v2.5.1"
+        href="https://github.com/opentoonz/GTS/releases/download/v2.5.1/GTS-2.5.1.zip"
         rel="noopener noreferrer"
         slot="footer"
       >
-        <Button><Windows />Download V2.5.1</Button>
+        <Button className="windows"><Windows />Download V2.5.1</Button>
       </a>
       <a
         href="https://github.com/opentoonz/GTS"
@@ -115,7 +134,7 @@ import Layout from "../../layouts/Layout.astro";
     <Card
       title="KumoWorks"
       subtitle="a software for making cloud scenery"
-      video="/kumoworks.webm"
+      video={KumoWorks}
     >
       <div slot="body" class="description">
         <p>It generates cloud image according to a silhouette you draw.</p>
@@ -132,21 +151,102 @@ import Layout from "../../layouts/Layout.astro";
       </div>
       <div slot="footer" class="buttons">
         <a
-          href="https://github.com/opentoonz/kumoworks/releases/tag/v1.0.1"
+          href="https://github.com/opentoonz/kumoworks/releases/download/v1.0.1/KumoWorksSetup.exe"
           rel="noopener noreferrer"
           slot="footer"
         >
-          <Button><Windows />Download V1.0.1</Button>
+          <Button className="windows"><Windows />Download V1.0.1</Button>
         </a><a
-          href="https://github.com/opentoonz/kumoworks/releases/tag/v1.0.1"
+          href="https://github.com/opentoonz/kumoworks/releases/download/v1.0.1/KumoWorks.pkg"
           rel="noopener noreferrer"
           slot="footer"
         >
-          <Button><MacOS />Download V1.0.1</Button>
+          <Button className="macos"><MacOS />Download V1.0.1</Button>
         </a>
       </div>
       <a
         href="https://github.com/opentoonz/kumoworks"
+        rel="noopener noreferrer"
+        target="_blank"
+        slot="footer"
+      >
+        Source code
+      </a>
+    </Card>
+    <Card
+      title="IwaWarper"
+      subtitle="a software for warping still images"
+      video={IwaWarper}
+      controls
+    >
+      <div slot="body" class="description">
+        <p>
+          IwaWarper is a software for warping still images (like patterns,
+          smudges and textures) fitting in the shape of reference animation
+          drawings.
+        </p>
+        <p>
+          IwaWarper is distributed under <a
+            href="https://github.com/opentoonz/iwawarper/blob/main/LICENSE.txt"
+            rel="noopener noreferrer"
+            target="_blank"
+            class="link">New BSD License</a
+          >.
+        </p>
+      </div>
+      <div slot="footer" class="buttons">
+        <a
+          href="https://github.com/opentoonz/iwawarper/releases/download/v1.0.1/IwaWarper_win-1.0.1.zip"
+          rel="noopener noreferrer"
+          slot="footer"
+        >
+          <Button className="windows"><Windows />Download V1.0.1</Button>
+        </a><a
+          href="https://github.com/opentoonz/iwawarper/releases/download/v1.0.1/IwaWarper_macOS-1.0.1.zip"
+          rel="noopener noreferrer"
+          slot="footer"
+        >
+          <Button className="macos"><MacOS />Download V1.0.1</Button>
+        </a>
+      </div>
+      <a
+        href="https://github.com/opentoonz/iwawarper"
+        rel="noopener noreferrer"
+        target="_blank"
+        slot="footer"
+      >
+        Source code
+      </a>
+    </Card>
+    <Card
+      title="XDTS Viewer"
+      subtitle="a software to view XDTS files"
+      video={XDTS_Viewer}
+      controls
+    >
+      <div slot="body" class="description">
+        <p>
+          XDTS Viewer is a software to view XDTS files and draw notes like a
+          paper exposure sheet.
+        </p>
+      </div>
+      <div slot="footer" class="buttons">
+        <a
+          href="https://github.com/opentoonz/xdts_viewer/releases/download/v1.0.0/xdts_viewer_windows.zip"
+          rel="noopener noreferrer"
+          slot="footer"
+        >
+          <Button className="windows"><Windows />Download V1.0</Button>
+        </a><a
+          href="https://github.com/opentoonz/xdts_viewer/releases/download/v1.0.0/xdts_viewer_macos.pkg"
+          rel="noopener noreferrer"
+          slot="footer"
+        >
+          <Button className="macos"><MacOS />Download V1.0</Button>
+        </a>
+      </div>
+      <a
+        href="https://github.com/opentoonz/xdts_viewer"
         rel="noopener noreferrer"
         target="_blank"
         slot="footer"
@@ -184,6 +284,7 @@ import Layout from "../../layouts/Layout.astro";
       align-items: center;
       gap: var(--spacing-md);
       padding: var(--spacing-xl) 200px;
+      color: var(--white-color);
 
       h1 {
         font-size: 3.5rem;
@@ -207,6 +308,14 @@ import Layout from "../../layouts/Layout.astro";
       justify-content: flex-start;
       align-items: center;
       gap: var(--spacing-md);
+
+      .install {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-md);
+      }
     }
   }
 
@@ -245,6 +354,11 @@ import Layout from "../../layouts/Layout.astro";
       font-weight: 900;
       color: var(--primary-color);
       text-align: center;
+    }
+
+    .link {
+      text-decoration: underline;
+      color: var(--black-color);
     }
 
     .buttons {

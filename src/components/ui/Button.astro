@@ -7,12 +7,15 @@ const { id, className, ...props } = Astro.props;
 
 const circle = className?.includes("circle");
 const white = className?.includes("white");
+
+const windows = className?.includes("windows");
+const macos = className?.includes("macos");
 ---
 
 <button
   {...props}
   id={id}
-  class={`${circle ? "circle" : ""} ${white ? "white" : ""} ${className}`}
+  class={`${circle ? "circle" : ""} ${white ? "white" : ""} ${windows ? "windows" : ""} ${macos ? "macos" : ""} ${className}`}
 >
   <slot />
 </button>
@@ -53,13 +56,13 @@ const white = className?.includes("white");
     max-width: 40px;
     max-height: 40px;
     padding: var(--spacing-md);
-
     border-radius: var(--rounded-full);
   }
 
   .white {
     background-color: var(--background-color);
     color: var(--dark-color);
+
     svg {
       stroke: var(--dark-color);
     }
@@ -68,5 +71,24 @@ const white = className?.includes("white");
   .white:hover,
   .white:active {
     background-color: var(--white-color);
+  }
+
+  .windows {
+    background-color: var(--windows-color);
+  }
+
+  .windows:hover,
+  .windows:active {
+    background-color: var(--windows-hover-color);
+  }
+
+  .macos {
+    background-color: var(--macos-color);
+    color: var(--dark-color);
+  }
+
+  .macos:hover,
+  .macos:active {
+    background-color: var(--macos-hover-color);
   }
 </style>

@@ -1,9 +1,12 @@
 ---
-import X from "../../assets/icons/X.astro";
 import Button from "./Button.astro";
 import Link from "./Link.astro";
+
+/** Icons */
 import ArrowUp from "../../assets/icons/ArrowUp.astro";
+import X from "../../assets/icons/X.astro";
 import Facebook from "../../assets/icons/Facebook.astro";
+import Youtube from "../../assets/icons/Youtube.astro";
 ---
 
 <script>
@@ -29,6 +32,11 @@ import Facebook from "../../assets/icons/Facebook.astro";
         href="https://facebook.com/OpenToonz"
         target="_blank"
         className="facebook"><Facebook />Facebook</Link
+      >
+      <Link
+        href="https://www.youtube.com/@shuniwasawa285"
+        target="_blank"
+        className="youtube"><Youtube />Youtube</Link
       >
     </div>
   </article>
@@ -102,6 +110,15 @@ import Facebook from "../../assets/icons/Facebook.astro";
     }
   }
 
+  .youtube:hover {
+    text-decoration: none;
+    color: #cd201f !important;
+
+    svg {
+      stroke: #cd201f !important;
+    }
+  }
+
   .dwango:hover {
     text-decoration: none;
     color: #0075c2 !important;
@@ -109,7 +126,7 @@ import Facebook from "../../assets/icons/Facebook.astro";
 
   hr {
     width: 2px;
-    height: 100px;
+    height: 150px;
   }
 
   @media screen and (max-width: 768px) {
